@@ -55,7 +55,7 @@ class custconsole {
     this.streamHandler = this.hideStream.bind(this);
     this.cmCloseHandler = this._masterCMCloser.bind(this);
 
-    this.color = new Color(this.log);
+    //this.color = new Color(this.log);
 
     this.checkOverflow = new MutationObserver(() => {this.correctOverflow()});
     this.checkOverflow.observe(this.log, {subtree: true, childList: true});
