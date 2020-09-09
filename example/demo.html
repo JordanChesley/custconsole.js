@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>custconsole.js demo</title>
+  <script src="custconsole.js"></script>
+  <style>
+    h3 {
+      text-align: center;
+    }
+    .console {
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+  <h3>JS custconsole.js Demo</h3>
+  <script>
+    const cc = new custconsole("Demo Console", "Jordan Chesley", "0.0.1", "console");
+    cc.users = {"Anooki": "minecraft"};
+
+    cc.command(function echo(...string) {
+      cc.print(...string);
+    }, undefined, "Print given string in console");
+
+    cc.command(() => {
+      cc.clear();
+    }, "clear");
+
+    cc.command(() => {
+      cc.login();
+      if (!(cc.logAtt)) {
+        cc.setPrompt(`${cc.currentUser}>`);
+      }
+    }, "login", "Login to the console");
+
+    cc.command(() => {
+      cc.logout();
+      if (cc.currentUser == null) {
+        cc.setPrompt(">");
+      }
+    }, "logout", "Logout of console");
+
+    cc.command(() => {
+      cc.destroy();
+    }, "destroy");
+  </script>
+</body>
+</html>
